@@ -38,7 +38,22 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function personal_profile_update(Request $request,$id)
+        
+       
     { 
+        
+        
+        $personal_profile = $request->validate([
+            'gender'          =>   'nullable',
+            'date_of_birth'   =>   'nullable',
+            'marital_status'  =>   'nullable',
+            'education'       =>   'nullable|string|max:30',
+            'country'         =>   'nullable|string|max:20',
+            'state'           =>   'nullable|string|max:30',
+            'address'         =>   'nullable|string|max:255',
+            'pincode'         =>   'nullable|numeric|max:6',
+        ]); 
+
             $user_profile = personal_profile::find($id);
            
 
